@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   height="166.68115pt"
+   viewBox="0 0 166.68114 166.68116"
+   width="166.68114pt"
+   version="1.1"
+   id="svg831"
+   sodipodi:docname="LinkedInIconWhite.svg"
+   inkscape:version="1.0.1 (3bc2e813f5, 2020-09-07)">
+  <metadata
+     id="metadata837">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <defs
+     id="defs835" />
+  <sodipodi:namedview
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1"
+     objecttolerance="10"
+     gridtolerance="10"
+     guidetolerance="10"
+     inkscape:pageopacity="0"
+     inkscape:pageshadow="2"
+     inkscape:window-width="1368"
+     inkscape:window-height="850"
+     id="namedview833"
+     showgrid="false"
+     inkscape:zoom="0.88043082"
+     inkscape:cx="-280.32873"
+     inkscape:cy="31.818295"
+     inkscape:window-x="-6"
+     inkscape:window-y="-6"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg831"
+     inkscape:document-rotation="0" />
+  <path
+     id="path2"
+     style="fill:#ffffff;stroke-width:6.94506"
+     d="M 20.01518,0 C 8.96559,0 0,8.965583 0,20.015174 c 0,11.049588 8.96559,20.20331 20.01518,20.20331 11.04958,0 20.016557,-9.153722 20.016557,-20.20331 C 40.024737,8.965583 31.05782,0 20.01518,0 Z m 105.2671,52.602188 c -16.80705,0 -28.085583,9.222724 -32.690163,17.966554 h -0.48637 V 55.393612 H 58.957107 V 166.67418 h 34.51579 v -55.10235 c 0,-14.508218 2.75068,-28.537148 20.717553,-28.537148 17.70296,0 17.96656,16.55723 17.96656,29.468088 v 54.17838 h 34.48233 v -0.007 h 0.0418 V 105.5444 c 0,-29.905428 -6.43747,-52.942232 -41.39888,-52.942232 z M 2.74961,55.400582 V 166.68115 h 34.559 V 55.400582 Z" />
+</svg>
