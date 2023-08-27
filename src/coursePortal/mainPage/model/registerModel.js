@@ -1,16 +1,18 @@
 import { SignInModel } from "./signInModel.js";
+import { PasswordResetModel } from "./passwordResetModel.js";
 import { HandlerController } from "../../../handlers/controller/handlerController.js";
+import { LoadingController } from "../../../handlers/controller/loadingController.js";
 import { writeUserData } from "../../../helpers/auth.js";
-import { REGEX } from "../../../helpers/helpers.js";
+import { VALIDATE_USER_INPUT } from "../../../helpers/helpers.js";
 
 const handlerController = new HandlerController();
+const signInModel = new SignInModel();
 
 export class RegisterModel {
 
     #registerUser(userData) {
         const { name, email, password } = userData;
         firebase.auth().createUserWithEmailAndPassword(email, password).then((userCredential) => {
-            const signInModel = new SignInModel();
             const user = userCredential.user;
             
             writeUserData({
@@ -34,66 +36,44 @@ export class RegisterModel {
 
     isUserInputValid(userData) {
         const { name, email, password, confirmPassword } = userData;
-        let isValid = true;
         let errorMessage = '';
 
-        // Validating name
-        if (name.length > 64 && isValid == true) {
-            isValid = false;
-            errorMessage = `The name is too long!<br>Maximum length is 64 characters`;
-        }
-        if (name.length === 0 && isValid == true) {
-            isValid = false;
-            errorMessage = "The name cannot be empty!";
-        }
+        const loadingController = new LoadingController();
+        loadingController.display();
 
-        // Validate email
-        if (email.length === 0 && isValid == true) {
-            isValid = false;
-            errorMessage = "The email address cannot be empty!";
-        }
-        if (email.length > 66 && isValid == true) {
-            isValid = false;
-            errorMessage = `The email address is too long!<br>Maximum length is 66 characters`;
-        }
-        let regex = REGEX;
-        if (!regex.test(email) && isValid == true) {
-            errorMessage = "The email address is not properly formatted!"; 
-            isValid = false;
-        }
-
-        // Validate password
-        if (password.length === 0 && isValid == true) {
-            isValid = false;
-            errorMessage = "The password cannot be empty!";
-        }
-        if (password.length > 140 && isValid == true) {
-            isValid = false;
-            errorMessage = `The password is too long!<br>Maximum length is 140 characters`;
-        }
-        if (password.length < 6 && isValid == true) {
-            isValid = false;
-            errorMessage = `The password is too short!<br>Minimum length is 6 characters`;
-        }
-
-        // Validate confirm password
-        if (password !== confirmPassword && isValid == true) {
-            isValid = false;
-            errorMessage = `The passwords don't match!<br>Please make sure that the password and the confirmed password are the same`;
-        }
+        errorMessage = VALIDATE_USER_INPUT({
+            name: name,
+            email: email,
+            password: password,
+            confirmPassword: confirmPassword
+        })
 
         // Show error message if there are any errors
-        if (isValid === false) {
-            handlerController.displayError(errorMessage);
+        if (errorMessage !== null) {
+            return handlerController.displayError(errorMessage);
         }
 
-        // Execute if all validation succeed
-        if (isValid === true) {
-            this.#registerUser({
+        // Register
+        if (name !== undefined && password !== undefined) {
+            return this.#registerUser({
                 name: name,
                 email: email,
                 password: password
             });
+        }
+
+        // Sign In
+        if (name === undefined && password !== undefined) {
+            return signInModel.signInWithEmail({
+                email: email,
+                password: password
+            });
+        }
+
+        // Password Reset
+        if (name === undefined && password === undefined) {
+            const passwordResetModel = new PasswordResetModel();
+            passwordResetModel.resetPassword(email);
         }
     }
 

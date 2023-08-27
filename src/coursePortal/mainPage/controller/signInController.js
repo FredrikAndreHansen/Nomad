@@ -1,4 +1,5 @@
 import { SignInModel } from "../model/signInModel.js";
+import { RegisterModel } from "../model/registerModel.js";
 import { LoadingController } from "../../../handlers/controller/loadingController.js";
 import { signInView } from "../view/signInView.js";
 
@@ -6,6 +7,7 @@ export class SignInController {
 
     setView() {
         const signInModel = new SignInModel();
+        const registerModel = new RegisterModel();
 
         const contentDOMEl = document.querySelector('#content');
         contentDOMEl.innerHTML = signInView;
@@ -29,7 +31,7 @@ export class SignInController {
         emailLoginBtnDOMEl.addEventListener('click', function(e) {
             e.preventDefault();
 
-            signInModel.isUserInputValid({
+            registerModel.isUserInputValid({
                 email: emailDOMEl.value,
                 password: passwordDOMEl.value
             });
