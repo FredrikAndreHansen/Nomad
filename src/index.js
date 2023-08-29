@@ -14,8 +14,3 @@ const firebaseConfig = {
 const app = firebase.initializeApp(firebaseConfig);
 
 setRoute();
-
-// Todo:
-// change course page to course.html
-// Add redirect to the sign in page after the password reset link has been sent
-// Remove the header folder and use html headers instead

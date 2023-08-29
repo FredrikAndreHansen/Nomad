@@ -1,37 +1,70 @@
 export const URL = 'http://localhost:8080/';
-export const COURSES_URL = URL + "?courses";
-export const REGISTER_URL = URL + "?register";
-export const PASSWORD_RESET_URL = URL + "?passwordreset";
+export const COURSES_URL = URL + "courses.html";
+export const REGISTER_URL = COURSES_URL + "?register";
+export const PASSWORD_RESET_URL = COURSES_URL + "?passwordreset";
 export const ERROR_URL = URL + "404.html";
 
-// Email validation, text followed by "@" followed by text, followed by "." followed by text
-export const REGEX = new RegExp('[a-zA-Z0-9]+@[a-zA-Z]+\.[a-zA-Z]{2,3}');
+export const ALL_COURSES = [
+    {
+        course: 'cyberSecurity',
+        title: 'Cyber Security Basics',
+        progress: 0,
+        isPaid: false
+    }
+];
 
 export function VALIDATE_USER_INPUT(userInfo) {
     const {name = 'NOT_SET', email = 'NOT_SET', password = 'NOT_SET', confirmPassword = 'NOT_SET'} = userInfo;
 
-    if (name !== 'NOT_SET') {
-        if (name.length > 64) {
-            return `The name is too long!<br>Maximum length is 64 characters`;
-        }
-        if (name.length === 0) {
-            return "The name cannot be empty!";
-        }
+    if (name !== 'NOT_SET' && validateName(name) !== null) {
+        return validateName(name);     
     }
     
-    if (email !== 'NOT_SET') {
-        if (email.length === 0) {
-            return "The email address cannot be empty!";
-        }
-        if (email.length > 66) {
-            return `The email address is too long!<br>Maximum length is 66 characters`;
-        }
-        let regex = REGEX;
-        if (!regex.test(email)) {
-            return "The email address is not properly formatted!"; 
-        }
+    if (email !== 'NOT_SET' && validateEmail(email) !== null) {
+        return validateEmail(email);
     }
-    
+
+    if (password !== 'NOT_SET' && validatePassword(password) !== null) {
+        return validatePassword(password);
+    }
+
+    if (confirmPassword !== 'NOT_SET' && confirmPassword !== password) {
+        return `The passwords don't match!<br>Please make sure that the password and the confirmed password are the same`;
+    }
+
+    return null;
+}
+
+// Email validation, text followed by "@" followed by text, followed by "." followed by text
+const regex = new RegExp('[a-zA-Z0-9]+@[a-zA-Z]+\.[a-zA-Z]{2,3}');
+
+function validateName(name) {
+    if (name.length > 64) {
+        return `The name is too long!<br>Maximum length is 64 characters`;
+    }
+    if (name.length === 0) {
+        return "The name cannot be empty!";
+    }
+
+    return null;
+}
+
+function validateEmail(email) {
+    if (email.length === 0) {
+        return "The email address cannot be empty!";
+    }
+    if (email.length > 66) {
+        return `The email address is too long!<br>Maximum length is 66 characters`;
+    }
+    let setRegex = regex;
+    if (!setRegex.test(email)) {
+        return "The email address is not properly formatted!"; 
+    }
+
+    return null;
+}
+
+function validatePassword(password) {
     if (password !== 'NOT_SET') {
         if (password.length === 0) {
             return "The password cannot be empty!";
@@ -42,10 +75,6 @@ export function VALIDATE_USER_INPUT(userInfo) {
         if (password.length < 6) {
             return `The password is too short!<br>Minimum length is 6 characters`;
         }
-    }
-
-    if (password !== confirmPassword && confirmPassword !== 'NOT_SET') {
-        return `The passwords don't match!<br>Please make sure that the password and the confirmed password are the same`;
     }
 
     return null;

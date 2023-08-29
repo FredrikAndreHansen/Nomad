@@ -11,14 +11,14 @@ export class HandlerController {
         this.#init();
     }
 
-    displaySuccess(message) {  
+    displaySuccess(message, redirect = false) {  
         errorDOMElement.innerHTML = successView(message);
-        this.#init();
+        this.#init(redirect);
     }
 
-    #init() {
+    #init(redirect = false) {
         this.#setBackgroundContainer();    
-        this.#removeOnClick();
+        this.#removeOnClick(redirect);
         this.#removeLoading();
     }
 
@@ -28,12 +28,16 @@ export class HandlerController {
         backgroundContainerErrorDOMEl.classList.add('background-container-show');
     }
 
-    #removeOnClick() {
-        // Remove when clicking on the button or outside the error element
+    #removeOnClick(redirect = false) {
+        // Remove when clicking on the button or outside the error element, or redirect to a different page
         const getDOMElements = [document.querySelector('#handler-btn'), document.querySelector('#background-container-error')];
         getDOMElements.forEach((element) => {
             element.addEventListener('click', function() {
-                this.#removeInnerElement();
+                if (redirect === false) {
+                    this.#removeInnerElement();
+                } else {
+                    window.location.replace(redirect.redirect);
+                }
             }.bind(this));
         });
     }

@@ -1,6 +1,6 @@
-import { RegisterModel } from "../model/registerModel.js";
 import { LoadingController } from "../../../handlers/controller/loadingController.js";
 import { passwordResetView } from "../view/passwordResetView.js";
+import { validateUserInputAndRedirect } from "../../../helpers/auth.js";
 
 export class PasswordResetController {
 
@@ -14,8 +14,7 @@ export class PasswordResetController {
         passwordResetBtnDOMEl.addEventListener('click', function(e) {
             e.preventDefault();
             
-            const registerModel = new RegisterModel();
-            registerModel.isUserInputValid({
+            validateUserInputAndRedirect({
                 email: emailDOMEl.value
             });
         });
