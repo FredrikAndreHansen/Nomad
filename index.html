@@ -10,66 +10,212 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@300;500&display=swap" rel="stylesheet">
-    <link rel="icon" type="image/x-icon" href="/graphics/logo.png">
-    <link rel="stylesheet" href="/style/computer.css">
-    <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-auth.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-database.js"></script>
-    <script src="/src/index.js" type="module"></script>
+    <link rel="icon" type="image/x-icon" href="graphics/logo.png">
+    <link rel="stylesheet" href="style/computer.css">
+    <script src="src/index.js" type="module"></script>
     <title>Nomad Ltd</title>
 </head>
 
 <body>
-    <div id="loading"></div>
-    <div id="handler"></div>
-    <div id="background-container"></div>
-    <div id="background-container-error"></div>
-
-    <div id="page-content">
-        <div id="header">
-            <div class="menu-background"></div>
-            <menu class="menu">
-                <a href="https://nomadis.co.uk">
-                    <img src="/graphics/logo.png" class="logo" alt="Nomad logo" />
-                    <h1 class="menu-header">NOMAD</h1>
-                    <p class="menu-paragraph">Inside Sales</p>
-                </a>
-            </menu>
+    <div id="loading">
+        <div class="loading-container ">
+            <span class="loader"></span>
         </div>
-
-        <section id="content">
-            <div class="background-intro-wrapper">
-                <div class="background-intro"></div>
-                <div class="logo-intro-wrapper ">
-                    <img class="logo-intro" src="/graphics/logoIntro.png" alt="Nomad Inside Sales Specialists Logo" />
-                    <img class="logo-intro-flipped" src="/graphics/logoIntro.png" alt="Nomad Inside Sales Specialists Logo Reflection" />
-                </div>
-                <div class="intro-elements-wrapper">
-                    <h1 class="header-text-center">Sales with Integrity:</h1>
-                    <h1 class="header-text-center negative-margin-x-small">Your Pathway to Lasting Success guided by Experts</h1>
-                    <button class="main-btn">READ MORE</button>    
-                </div>
-            </div>
-        </section>
-            
-           
-
-        <div class="about-section">
-            <div class="about-section-inner"></div>
-        </div>
-            
-            
-
-        </div>
-
-        <footer class="footer">
-            <a class="footer-text" href="https://nomadis.co.uk">© 2023 Nomad. All Rights Reserved</a>
-            <div class="footer-wrapper">
-                <a target="_blank" href="https://www.linkedin.com/company/nomad-sales-specialists"><img src="/graphics/icons/linkedinIcon.svg" class="social-icon" alt="LinkedIn icon" /></a>
-                <a target="_blank" href="https://www.facebook.com/profile.php?id=100094651426435"><img src="/graphics/icons/facebookIcon.svg" class="social-icon" alt="Facebook icon" /></a>
-                <a target="_blank" href="https://www.instagram.com/info.nomadis/?igshid=NGExMmI2YTkyZg%3D%3D"><img src="/graphics/icons/instagramIcon.svg" class="social-icon" alt="Instagram icon" /></a>
-            </div>
-        </footer>
     </div>
+    <div id="handler"></div>
+    <div id="background-container" class="background-container-show"></div>
+    <div id="background-container-error"></div>
+    <div id="page-content"></div>
+    <div id="intro-loading"></div>
+
+    <div id="header">
+        <div class="menu-background"></div>
+        <menu class="menu">
+            <div class="menu-secondary-backgroundcolor">
+                <ul class="menu-links">
+                    <li class="menu-link"><a class="header-text-center-small">About</a></li>
+                    <li class="menu-link"><a class="header-text-center-small">Services</a></li>
+                    <li class="menu-link"><a class="header-text-center-small">Meet the Team</a></li>
+                    <li class="menu-link"><a class="header-text-center-small">Contact</a></li>
+                </ul>
+            </div>
+            <a href="https://nomadis.co.uk">
+                <img src="graphics/logo.png" class="logo" alt="Nomad logo" />
+                <h1 class="menu-header">NOMAD</h1>
+                <p class="menu-paragraph">Inside Sales</p>
+            </a>
+
+        </menu>
+    </div>
+
+    <section id="content">
+        <div class="background-intro-wrapper">
+            <div class="background-intro"></div>
+            <div class="logo-intro-wrapper">
+                <img class="logo-intro" src="graphics/logoIntro.png" alt="Nomad Inside Sales Specialists Logo" />
+                <div class="intro-flipped-blur-effect"><img class="logo-intro-flipped" src="graphics/logoIntro.png" alt="Nomad Inside Sales Specialists Logo Reflection" /></div>
+            </div>
+            <div class="intro-elements-wrapper">
+                <h1 class="header-text-center">Sales with Integrity:</h1>
+                <h1 class="header-text-center negative-margin-x-small">Your Pathway to Lasting Success guided by Experts</h1>
+            </div>
+            <div class="pointer-intro-wrapper">
+                <img class="pointer-intro" src="graphics/icons/pointer.svg" />
+            </div>
+        </div>
+    </section>      
+
+    <section id="about" class="about-section">
+        <div class="about-section-inner"></div>
+
+        <div class="about-item">
+            <h2 class="header-text-center-x-big">ABOUT NOMAD</h2>
+            <p class="p-dark-center-small justify about-text-padding">Nomad is a dynamic outsourced sales organization, dedicated to providing businesses with rapid scalability, efficient sales operations, comprehensive consultancy and training services. Our mission is to alleviate the burden of sales management for our clients, allowing them to focus on their core business while we drive revenue growth through expert sales teams, strategic guidance, and effective communication across language barriers.</p>
+            <button class="main-btn">CONTACT US</button>
+            <div class="big-space"></div>
+        </div>
+
+    </section>
+
+    <section id="services" class="services">
+
+        <h2 class="header-text-center-x-big">SERVICES</h2>
+        <h3 class="header-text-center-big">Redefine Sales, Embrace Success: Nomad Leading the Way</h3>
+        <p class="p-dark-center-small about-text-padding">We offer a range of services to help startups and existing companies achieve their sales goals.</p>
+        <div class="services-items">
+            <div class="service-item">
+                <p class="header-text-center-x-big">01</p>
+                <h3 class="header-text-center left">Lead to Revenue Revolution: Supercharging Sales Conversions</h3>
+                <p class="p-dark-center-small justify">Designed to help businesses maximize the potential of their existing leads and drive successful sales conversions. We take ownership of your leads, implement effective lead management strategies, nurture prospects, and close deals to accelerate revenue growth and drive business success.</p>
+            </div>
+
+            <div class="service-item">
+                <p class="header-text-center-x-big">02</p>
+                <h3 class="header-text-center left">Go-to-Market Blitz: Unleashing Sales Success at Lightning Speed</h3>
+                <p class="p-dark-center-small justify">Designed to help businesses optimize their sales efforts and drive revenue growth through a targeted and effective go-to-market strategy. We provide a comprehensive range of sales services, leveraging industry expertise, proven methodologies, and advanced sales techniques to maximize your sales outcomes.</p>
+            </div>
+
+            <div class="service-item">
+                <p class="header-text-center-x-big">03</p>
+                <h3 class="header-text-center left">Startup Sales Turbocharger: Revving Up Revenue Acceleration</h3>
+                <p class="p-dark-center-small justify">Designed to support startups in building a strong sales foundation and driving revenue growth. We provide tailored sales strategies, guidance, and execution support to help startups overcome sales challenges, scale their customer base, and achieve sustainable business growth.</p>
+            </div>
+
+            <div class="service-item">
+                <p class="header-text-center-x-big">04</p>
+                <h3 class="header-text-center left">Sales Dynamo Makeover: Optimizing Team Performance with Impact</h3>
+                <p class="p-dark-center-small justify">Designed to help businesses take ownership of their existing sales teams, drive performance improvements, and achieve sustainable revenue growth. We provide a comprehensive range of services to assess, align, and optimize your sales team for maximum effectiveness and results.</p>
+            </div>
+
+            <div class="service-item">
+                <p class="header-text-center-x-big">05</p>
+                <h3 class="header-text-center left">Sales Nexus: Mastering the Art of Inside Sales</h3>
+                <p class="p-dark-center-small justify">Designed to equip you with the skills, knowledge, and techniques necessary to excel in the dynamic field of inside sales. Our program consists of 10 modules that cover a wide range of essential topics, empowering you or your team to become confident and successful sales professionals.</p>
+            </div>
+        </div>
+
+        <div class="big-space"></div>
+
+    </section>
+
+    <section id="team" class="team">
+        <h2 class="header-text-center-x-big">OUR TEAM</h2>
+        <div class="team-text-wrapper">
+            <p class="header-text-center">We are a close-knit family united by a passion for Sales.</p>
+            <p class="p-dark-center-small">With diverse backgrounds, talents, and perspectives, we create a dynamic synergy to build lasting relationships based on trust, transparency, and mutual success. Discover how our team's passion and unwavering spirit drive us to go above and beyond for you.</p>
+            <p class="p-dark-center-small">Let's connect and embark on this remarkable sales journey together.</p>
+        </div>
+
+        <div class="big-space"></div>
+
+        <div class="team-members-section">
+
+            <div class="team-member">
+                <img class="team-member-img" src="graphics/images/daniel.jpg" alt="Daniel Saavedra" />
+                <h4 class="header-text-center">CEO</h4>
+                <h3 class="header-text-center-small negative-margin-medium">Daniel Saavedra</h3>
+                <a href="https://www.linkedin.com/in/alfredo-saa-2a0a62212/" target="_blank">
+                    <img src="graphics/icons/linkedinIcon.svg" class="linkedin-icon-team-member" alt="LinkedIn icon" />
+                </a>
+            </div>
+
+            <div class="team-member">
+                <img class="team-member-img" src="graphics/images/chris.jpg" alt="Chris van Zijp" />
+                <h4 class="header-text-center">CTO</h4>
+                <h3 class="header-text-center-small negative-margin-medium">Chris van Zijp</h3>
+                <a href="https://www.linkedin.com/in/chrisvzijp/" target="_blank">
+                    <img src="graphics/icons/linkedinIcon.svg" class="linkedin-icon-team-member" alt="LinkedIn icon" />
+                </a>
+            </div>
+
+            <div class="team-member">
+                <img class="team-member-img" src="graphics/images/raffaella.jpg" alt="Raffaella P. Hansen" />
+                <h4 class="header-text-center">COO</h4>
+                <h3 class="header-text-center-small negative-margin-medium">Raffaella P. Hansen</h3>
+                <a href="https://www.linkedin.com/in/raffaella-palladino-hansen-2b5b0636/" target="_blank">
+                    <img src="graphics/icons/linkedinIcon.svg" class="linkedin-icon-team-member" alt="LinkedIn icon" />
+                </a>
+            </div>
+
+            <div class="team-member">
+                <img class="team-member-img" src="graphics/images/fredrik.jpg" alt="Fredrik P. Hansen" />
+                <h4 class="header-text-center">Web & Software Development</h4>
+                <h3 class="header-text-center-small negative-margin-medium">Fredrik P. Hansen</h3>
+                <a href="https://www.linkedin.com/in/fredrik-palladino-hansen-b92187119/" target="_blank">
+                    <img src="graphics/icons/linkedinIcon.svg" class="linkedin-icon-team-member" alt="LinkedIn icon" />
+                </a>
+            </div>
+
+        </div>
+
+        <div class="big-space"></div>
+    </section>
+
+    <section id="contact-section" class="contact-section">
+        <div class="contact-wrapper-right">
+            <h2 class="header-text-center-x-big">CONTACT US</h2>
+            <p class="header-text-center">Ready to get ahead, stay ahead, and thrive?</p>
+            <p class="header-text-center">Let's make it happen together!</p>
+
+            <div class="big-space"></div>
+
+            <div class="contact-container">
+                <img class="contact-icon" src="graphics/icons/emailIcon.svg" alt="Email icon" />
+                <p class="header-text-center">info@nomadis.co.uk</p>
+                <div class="contact-margin"></div>
+                <img class="contact-icon" src="graphics/icons/phoneIcon.svg" alt="Phone icon" />
+                <p class="header-text-center">+44 756 382 5161</p>
+
+                <hr class="contact-form-hr-left" />
+                <hr class="contact-form-hr-right" />
+                <p class="p-dark-center-x-small">Or</p>
+                <form class="email-wrapper">
+                    <p class="p-dark-center-x-small">Contact us by using this form</p>
+                    <input type="text" id="name" placeholder="Name" maxlength="66" required />
+                    <input type="email" id="email" placeholder="Email" maxlength="66" required />
+                    <textarea id="message" placeholder="Message" rows="4" maxlength="500" required></textarea>
+                    <button id="submit" class="sign-in-btn">SUBMIT</button>
+                </form>
+            </div>
+        </div>
+        <div class="big-space"></div>
+    </section>
+        
+    <div class="footer-size"></div>
+    <footer class="footer">
+        <a class="footer-text" href="https://nomadis.co.uk">© 2023 Nomad. All Rights Reserved</a>
+        <div class="footer-wrapper">
+            <a target="_blank" href="https://www.linkedin.com/company/nomad-sales-specialists">
+                <img src="graphics/icons/linkedinIcon.svg" class="social-icon" alt="LinkedIn icon" />
+            </a>
+            <a target="_blank" href="https://www.facebook.com/profile.php?id=100094651426435">
+                <img src="graphics/icons/facebookIcon.svg" class="social-icon" alt="Facebook icon" />
+            </a>
+            <a target="_blank" href="https://www.instagram.com/info.nomadis/?igshid=NGExMmI2YTkyZg%3D%3D">
+                <img src="graphics/icons/instagramIcon.svg" class="social-icon" alt="Instagram icon" />
+            </a>
+        </div>
+    </footer>
+
 </body>
 </html>

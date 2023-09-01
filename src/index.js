@@ -1,16 +1,11 @@
-import { setRoute } from "./helpers/router.js";
+import { LoadingController } from "./handlers/controller/loadingController.js";
 
-const firebaseConfig = {
-  apiKey: "AIzaSyAKJcAdJwh-B4PqRhWb1VusZB61sl7Tx-Y",
-  authDomain: "nomadis-e08c3.firebaseapp.com",
-  databaseURL: "https://nomadis-e08c3-default-rtdb.europe-west1.firebasedatabase.app/",
-  projectId: "nomadis-e08c3",
-  storageBucket: "nomadis-e08c3.appspot.com",
-  messagingSenderId: "935414808744",
-  appId: "1:935414808744:web:ad70dcdd1660608502c29d"
-}
+const introLoadingDOMEl = document.querySelector('#intro-loading');
 
-// Initialize Firebase
-const app = firebase.initializeApp(firebaseConfig);
+const loadingController = new LoadingController();
 
-setRoute();
+window.addEventListener('load', function() {
+  history.scrollRestoration = 'manual';
+  loadingController.remove();
+  introLoadingDOMEl.style.display = 'none';
+});

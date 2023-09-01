@@ -4,7 +4,7 @@ import { PasswordResetController } from "../coursePortal/mainPage/controller/pas
 import { CoursesController } from "../coursePortal/mainPage/controller/coursesController.js";
 import { LoadingController } from "../handlers/controller/loadingController.js";
 import { validateAndUpdateUser } from "./auth.js";
-import { URL, COURSES_URL, REGISTER_URL, PASSWORD_RESET_URL, ERROR_URL } from "./helpers.js";
+import { COURSES_URL, REGISTER_URL, PASSWORD_RESET_URL, ERROR_URL } from "./helpers.js";
 
 const getCurrentUrl = window.location.href;
 
@@ -13,11 +13,6 @@ const loadingController = new LoadingController();
 export function setRoute() {
 
     loadingController.display();
-
-    // Index page
-    if (getCurrentUrl === URL) {
-        return loadingController.remove();
-    }
 
     // Course Portal Index
     if (getCurrentUrl === COURSES_URL) {
