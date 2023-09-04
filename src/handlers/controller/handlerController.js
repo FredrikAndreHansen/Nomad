@@ -56,7 +56,7 @@ export class HandlerController {
 
     throwError(errorMessage) {
         const error = new Error(errorMessage);
-        throw error;
+        throw error.message;
     }
 
 }
