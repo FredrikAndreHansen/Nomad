@@ -54,4 +54,9 @@ export class HandlerController {
         loadingController.remove();
     }
 
+    throwError(errorMessage) {
+        const error = new Error(errorMessage);
+        throw error;
+    }
+
 }

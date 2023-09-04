@@ -138,36 +138,34 @@ export function signOut() {
 }
 
 export function validateUserInputAndRedirect(userData) {
-    const { name, email, password, confirmPassword } = userData;
-    let errorMessage = '';
+    try {
+        const { name, email, password, confirmPassword } = userData;
 
-    const loadingController = new LoadingController();
-    loadingController.display();
+        const loadingController = new LoadingController();
+        loadingController.display();
 
-    errorMessage = VALIDATE_USER_INPUT({
-        name: name,
-        email: email,
-        password: password,
-        confirmPassword: confirmPassword
-    });
+        errorMessage = VALIDATE_USER_INPUT({
+            name: name,
+            email: email,
+            password: password,
+            confirmPassword: confirmPassword
+        });
 
-    if (errorMessage !== null) {
-        return handlerController.displayError(errorMessage);
+        if (name !== undefined && password !== undefined) {
+            return redirectToRegister(name, email, password);
+        }
+
+        if (name === undefined && password !== undefined) {
+            return redirectToSignIn(email, password);
+        }
+
+        if (name === undefined && password === undefined) {
+            return redirectToPasswordReset(email);
+        }
+
+    } catch(errorMessage) {
+        handlerController.displayError(errorMessage);
     }
-
-    if (name !== undefined && password !== undefined) {
-        return redirectToRegister(name, email, password);
-    }
-
-    if (name === undefined && password !== undefined) {
-        return redirectToSignIn(email, password);
-    }
-
-    if (name === undefined && password === undefined) {
-        return redirectToPasswordReset(email);
-    }
-
-    return handlerController.displayError('Ooops, something went wrong!<br>Please try again later');
 }
 
 function redirectToRegister(name, email, password) {
